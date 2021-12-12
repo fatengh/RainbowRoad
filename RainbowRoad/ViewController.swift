@@ -9,11 +9,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    let colors = [UIColor.red , UIColor.blue , UIColor.green , UIColor.yellow , UIColor.purple]
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+      
     }
 
 
 }
+extension ViewController: UITableViewDataSource{
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return colors.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RinbowCell", for: indexPath)
+        cell.backgroundColor = colors[indexPath.row]
+        tableView.rowHeight = 150
+        return cell
+    }
+    
+  
 
+}
